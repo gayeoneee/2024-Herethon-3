@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .error {
+            color: red;
+        }
+        .form-field {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>회원가입</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-field">
+            <label for="id_userId">아이디:</label>
+            {{ form.userId }}
+            {% if form.userId.errors %}
+                <div class="error">{{ form.userId.errors }}</div>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            <label for="id_userEmail">이메일:</label>
+            {{ form.userEmail }}
+            {% if form.userEmail.errors %}
+                <div class="error">{{ form.userEmail.errors }}</div>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            <label for="id_password1">비밀번호:</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <div class="error">{{ form.password1.errors }}</div>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            <label for="id_password2">비밀번호 확인:</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <div class="error">{{ form.password2.errors }}</div>
+            {% endif %}
+        </div>
+        <div class="form-field">
+            <label for="id_nickname">닉네임:</label>
+            {{ form.nickname }}
+            {% if form.nickname.errors %}
+                <div class="error">{{ form.nickname.errors }}</div>
+            {% endif %}
+        </div>
+        <div>
+            <input type="submit" value="가입하기">
+        </div>
+    </form>
+</body>
+</html>
