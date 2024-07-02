@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>홈</h1>
+    <div>
+        <a href="{% url 'accounts:signup' %}">회원가입</a>
+    </div>
+    <div>
+        <a href="{% url 'accounts:login' %}">로그인</a>
+    </div>
+    <div>
+        <a href="{% url 'accounts:logout' %}">로그아웃</a>
+    </div>
+    <div>
+        회원가입 완료!/ 로그인 완료!
+    </div>
+</body>
+</html>
