@@ -1,0 +1,20 @@
+<!-- study/templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+</head>
+<body>
+    <h1>Quiz Result</h1>
+    <p><strong>Question:</strong> {{ quiz.question }}</p>
+    <p><strong>Your answer:</strong> {{ selected_answer }} - {{ selected_answer_text }}</p>
+    <p><strong>Correct answer:</strong> {{ correct_answer }} - {{ correct_answer_text }}</p>
+    {% if is_correct %}
+        <p style="color: green;">Correct!</p>
+    {% else %}
+        <p style="color: red;">Incorrect.</p>
+    {% endif %}
+</body>
+</html>

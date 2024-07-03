@@ -1,0 +1,21 @@
+<!-- study/templates/questions.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ quiz.title }}</title>
+</head>
+<body>
+    <h1>{{ quiz.title }}</h1>
+    <p>{{ quiz.question}}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="radio" name="answer" value="1"> {{ quiz.options1 }}<br>
+        <input type="radio" name="answer" value="2"> {{ quiz.options2 }}<br>
+        <input type="radio" name="answer" value="3"> {{ quiz.options3 }}<br>
+        <input type="radio" name="answer" value="4"> {{ quiz.options4 }}<br>
+        <button type="submit">Submit Answer</button>
+    </form>
+</body>
+</html>

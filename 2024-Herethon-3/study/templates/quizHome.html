@@ -1,0 +1,17 @@
+<!-- study/templates/studyHome.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quiz Home</title>
+</head>
+<body>
+    <h1>quiz Home</h1>
+    <div class="quiz_list">
+        {% for quiz in quizzes %}
+            <a href="{% url 'study:question' quiz.id %}">{{ quiz.title }}</a><br>
+        {% endfor %}
+    </div>
+</body>
+</html>
