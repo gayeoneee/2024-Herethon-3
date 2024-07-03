@@ -1,8 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Quiz, SubmitAnswer
+from .models import Quiz, SubmitAnswer, FlashCard, SavedFlashCard
 from django.contrib.auth.decorators import login_required
 
-# 스터디 홈 (현재 퀴즈 홈 - 목록 띄워줌)
+# 스터디 홈 
+@login_required
+def studyHome(request):
+    return render(request, 'studyHome.html')
+
+""" 퀴즈 """
+
+# 퀴즈 홈 (퀴즈 목록)
 @login_required
 def quizHome(request):
     quizzes = Quiz.objects.all()
@@ -54,4 +61,32 @@ def result(request, pk):
         'is_correct': is_correct
     })
 
+
+""" 플래시 카드 """
+# 플래시 카드 홈 (플래시 카드 목록)
+@login_required
+def flashCardHome(request):
+    flashcards = FlashCard.objects.all()
+    return render(request, 'flashCardHome.html', {'flashcards': flashcards})
+
+# 플래시 카드 주제 
+@login_required
+def flashCardSubject(request, pk):
+    flashcard = get_object_or_404(FlashCard, pk=pk)
+    return render(request, 'flashCardSubject.html', {'flashcard': flashcard})
+
+
+# 플래시 카드 내용
+@login_required
+def flashCardContent(request, pk):
+    flashcard = get_object_or_404(FlashCard, pk=pk)
+    return render(request, 'flashCardContent.html', {'flashcard': flashcard})
+
+
+# 플래시 카드 사용자 저장
+@login_required
+def saveFlashCard(request, pk):
+    flashcard = get_object_or_404(FlashCard, pk=pk)
+    saved_flashcard, created = SavedFlashCard.objects.get_or_create(user=request.user, flashcard=flashcard)
+    return redirect('study:flashCardHome')
 
